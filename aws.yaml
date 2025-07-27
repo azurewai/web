@@ -1,0 +1,286 @@
+openapi: 3.0.0
+info:
+  title: Melco IRMS API - AWS API
+  version: 1.0.0
+  description: API documentation for all AWS endpoints found in the IRMS app (Content, Food/Drink, etc.)
+servers:
+  - url: https://melsuite-dev.melco-resorts.com/nodejs-irms-api
+  - url: https://melsuite-qa.melco-resorts.com/nodejs-irms-api
+  - url: https://melsuite-mre-prod.melco-resorts.com/nodejs-irms-api
+  - url: https://melsuite-cyprus-prod.melco-resorts.com/nodejs-irms-api
+paths:
+  /api/ird/category/property/{property}:
+    get:
+      summary: Get IRD categories
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of IRD categories
+  /api/ird/paymentMethod/property/{property}:
+    get:
+      summary: Get IRD payment methods
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of payment methods
+  /api/ird/allergyOptions/property/{property}:
+    get:
+      summary: Get IRD allergy options
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of allergy options
+  /api/ird/parameters/property/{property}:
+    get:
+      summary: Get IRD parameters
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of IRD parameters
+  /api/ird/servicePeriod/property/{property}:
+    get:
+      summary: Get IRD service period
+      parameters:
+        - name: property
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of service periods
+  /api/ird/payment/validation/{propertyCode}/{roomNo}/{checkInDate}/{checkOutDate}:
+    get:
+      summary: Validate IRD payment
+      parameters:
+        - name: propertyCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: roomNo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: checkInDate
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: checkOutDate
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment validation result
+  /api/contentMgnt/getAttractionCategoryByType/{type}/{language}:
+    get:
+      summary: Get attraction categories by type
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of attraction categories
+  /api/contentMgnt/getAttractionByCategoryId/{categoryId}/{language}:
+    get:
+      summary: Get attractions by category ID
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of attractions
+  /api/contentMgnt/getAttractionDetailByAttractionId/{attractionId}/{language}:
+    get:
+      summary: Get attraction details by attraction ID
+      parameters:
+        - name: attractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Attraction details
+  /api/contentMgnt/promotionalCard:
+    get:
+      summary: Get promotional cards
+      responses:
+        '200':
+          description: List of promotional cards
+  /api/contentMgnt/getAboutMacauDetailByCategoryId/{attractionId}/{language}:
+    get:
+      summary: Get About Macau details
+      parameters:
+        - name: attractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: About Macau details
+  /api/contentMgnt/getAboutCyprusDetailByCategoryId/{attractionId}/{language}:
+    get:
+      summary: Get About Cyprus details
+      parameters:
+        - name: attractionId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: About Cyprus details
+  /api/contentMgnt/filter/category/{categoryId}:
+    get:
+      summary: Get filter by category
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Filter details
+  /api/ird/getSubCategoryByCategoryId/{categoryId}/{language}:
+    get:
+      summary: Get IRD subcategories by category ID
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of subcategories
+  /api/ird/getFoodMenuByCategoryId/{menuId}/{language}:
+    get:
+      summary: Get IRD food menu by category ID
+      parameters:
+        - name: menuId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of food menu items
+  /api/ird/getFoodDetailByFoodId/{foodId}/{language}:
+    get:
+      summary: Get IRD food detail by food ID
+      parameters:
+        - name: foodId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Food detail
+  /api/ird/getDrinkMenuByCategoryId/{menuId}/{language}:
+    get:
+      summary: Get IRD drink menu by category ID
+      parameters:
+        - name: menuId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of drink menu items
+  /api/ird/getDrinkDetailByDrinkId/{drinkId}/{language}:
+    get:
+      summary: Get IRD drink detail by drink ID
+      parameters:
+        - name: drinkId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: language
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Drink detail

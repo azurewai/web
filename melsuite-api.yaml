@@ -1,0 +1,44 @@
+openapi: 3.0.0
+info:
+  title: Melco IRMS API - Melsuite API
+  version: 1.0.0
+  description: API documentation for all Melsuite API endpoints found in the IRMS app
+servers:
+  - url: https://melsuite-dev.melco-resorts.com/api/
+  - url: https://melsuite-qa.melco-resorts.com/api
+  - url: https://melsuite-mre-prod.melco-resorts.com/api
+  - url: https://melsuite-cyprus-prod.melco-resorts.com/api
+paths:
+  /room/tablet:
+    post:
+        summary: Send tablet info to backend
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                description: SendTabletInfoBody
+                properties:
+                  propertyCode:
+                    type: string
+                  roomNumber:
+                    type: string
+                  macAddress:
+                    type: string
+                  uuidValue:
+                    type: string
+                  ipAddress:
+                    type: string
+                  androidId:
+                    type: string
+                example:
+                  propertyCode: "SC2"
+                  roomNumber: "605"
+                  macAddress: "08:78:08:41:7A:4A"
+                  uuidValue: "3141ad68-f081-4625-8bef-fcf1c686e739"
+                  ipAddress: "10.0.0.0"
+                  androidId: "R52JB1RLCNY"
+        responses:
+          '200':
+            description: Send tablet info response successfully

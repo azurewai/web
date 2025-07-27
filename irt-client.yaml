@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Melco IRMS API - IRT client API
+  version: 1.0.0
+  description: API documentation for all IRT client endpoints found in the IRMS app
+servers:
+  - url: https://melsuite-dev.melco-resorts.com/irms-irt-client
+  - url: https://melsuite-dev.melco-resorts.com/irms-irt-client-sc2
+  - url: https://melsuite-cyprus-prod.melco-resorts.com/irms-irt-client
+  - url: https://melsuite-qa.melco-resorts.com/irms-irt-client
+  - url: https://melsuite-qa.melco-resorts.com/irms-irt-client-sc2
+  - url: https://melsuite-cyprus-prod.melco-resorts.com/irms-irt-client
+  - url: https://melsuite-mre-prod.melco-resorts.com/irms-irt-client
+  - url: https://melsuite-mre-prod.melco-resorts.com/irms-irt-client-sc2
+  - url: https://melsuite-cyprus-prod.melco-resorts.com/irms-irt-client
+paths:
+  /order-status/{propertyCode}/{roomNo}/{orderId}:
+    get:
+      summary: Get IRD order status
+      parameters:
+        - name: propertyCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: roomNo
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order status
+  /ird-order:
+    post:
+      summary: Send IRD order
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: SendIrdOrderBody
+      responses:
+        '200':
+          description: Order response 
